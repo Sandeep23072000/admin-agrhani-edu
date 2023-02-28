@@ -1,0 +1,47 @@
+<div class="add-college">
+    <h3 mat-dialog-title>Add-College</h3>
+    <div mat-dialog-content>
+        <form [formGroup]="addCollegeForm" (ngSubmit)="addCollegeFormSubmit()">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mb-3">
+                            <label for="customername-field" class="form-label text-success fw-bold">Name</label>
+                            <input type="text" formControlName="name" id="customername-field" class="form-control"
+                                placeholder="Enter College Name" required />
+                            <!-- <p *ngIf="is_submit && addCollegeForm.controls['name'].hasError('required')" style="color:red">
+                                Name is required</p>
+                            <p style="color:red">{{error}}</p> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="mb-3">
+                            <label for="customername-field" class="form-label text-success fw-bold">Address</label>
+                            <input type="text" formControlName="address" id="registration_number-field" class="form-control"
+                                placeholder="Enter College Address" required />
+                            <!-- <p *ngIf="is_submit && addCollegeForm.controls['registration_number'].hasError('required')" style="color:red">
+                                Registration number is required</p>
+                            <p style="color:red">{{error}}</p>  -->
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="mb-3">
+                            <label for="customername-field" class="form-label text-success fw-bold">Image</label>
+                            <input type="file" name="image" class="file-input form-control"
+                            (change)="onFileSelected($event)" #addSpeacialization>
+                            <!-- <p *ngIf="is_submit && addCollegeForm.controls['registration_number'].hasError('required')" style="color:red">
+                                Registration number is required</p>
+                            <p style="color:red">{{error}}</p>  -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer mt-4">
+                <div class="hstack gap-2 justify-content-end">
+                    <button type="button" class="btn btn-light" (click)="closeDialog()">Close</button>
+                    <button type="submit" class="btn btn-success" id="edit-btn">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
