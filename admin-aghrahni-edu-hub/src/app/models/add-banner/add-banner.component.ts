@@ -5,25 +5,24 @@ import { AuthService } from 'src/app/service/auth.service';
 import { imageFormatValidator } from 'src/app/imgvalidator';
 
 @Component({
-  selector: 'app-add-college',
-  templateUrl: './add-college.component.html',
-  styleUrls: ['./add-college.component.css']
+  selector: 'app-add-banner',
+  templateUrl: './add-banner.component.html',
+  styleUrls: ['./add-banner.component.css']
 })
-export class AddCollegeComponent implements OnInit {
-
+export class AddBannerComponent implements OnInit  {
   is_submit: boolean = false;
   error: string = '';
   selectedImage: any = false;
-  addCollegeForm = this.fb.group({
-    name: ['', Validators.required],
-    address: ['', Validators.required],
-    // image: ['', [Validators.required, imageFormatValidator]]
+  addBannerForm = this.fb.group({
+  //   name: ['', Validators.required],
+  //   address: ['', Validators.required],
+    image: ['', [Validators.required]]
   });
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private auth: AuthService, private fb: FormBuilder, public dialog: MatDialog, public dialogRef: MatDialogRef<AddCollegeComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private auth: AuthService, private fb: FormBuilder, public dialog: MatDialog, public dialogRef: MatDialogRef<AddBannerComponent>) {
     console.log(data, 'college dialooggggg');
-    if (data?.college) {
-      this.updateCollege(data?.college);
+    if (data?.banner) {
+      this.updateCollege(data?.banner);
     }
   }
 
@@ -31,10 +30,10 @@ export class AddCollegeComponent implements OnInit {
 
   }
 
-  get uc() { return this.addCollegeForm.controls; };
+  get uc() { return this.addBannerForm.controls; };
   updateCollege(data: any) {
-    this.uc['name'].setValue(data?.name);
-    this.uc['address'].setValue(data?.address);
+    // this.uc['name'].setValue(data?.name);
+    // this.uc['address'].setValue(data?.address);
     // this.uc['image'].setValue(data?.image);
   }
 
@@ -46,21 +45,21 @@ export class AddCollegeComponent implements OnInit {
     }
   }
 
-  addCollegeFormSubmit() {
+  addBannerFormSubmit() {
     this.is_submit = true;
-    console.log(this.addCollegeForm.value);
-    if (this.addCollegeForm.invalid) {
-      return
-    }
+    // console.log(this.addBannerForm.value);
+    // if (this.addBannerForm.invalid) {
+    //   return
+    // }
     const formData: any = new FormData();
-    formData.append("name", this.addCollegeForm.value?.name);
-    formData.append("address", this.addCollegeForm.value?.address);
-    // formData.append("image", this.addCollegeForm.value?.image);
+    // formData.append("name", this.addBannerForm.value?.name);
+    // formData.append("address", this.addBannerForm.value?.address);
+    // formData.append("image", this.addBannerForm.value?.image);
 
     formData.append("image", this.selectedImage, this.selectedImage.name);
     console.log(formData, " formData");
     if (!this.data?.update) {
-      this.auth.postMultiPartAPI('/college/add', formData).subscribe((res) => {
+      this.auth.postMultiPartAPI('/banner/add', formData).subscribe((res) => {
         console.log(res);
 
         if (res.success) {

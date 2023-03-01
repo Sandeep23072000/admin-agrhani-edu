@@ -10,16 +10,16 @@ import { HttpClient } from '@angular/common/http';
 // http://127.0.0.1:6000/api/v1/college
 
 export class AuthService {
-  domain = '192.168.1.22:4000'
+  domain = '192.168.1.15:4000'
   baseUrl: string = 'http://' + this.domain;
   apiUrl: string = this.baseUrl + '/api/v1';
   httpOptions: any;
   constructor(private http: HttpClient) { }
 
   getAPI(url: any): Observable<any> {
-    // this.httpOptions = {
-    //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    // };
+    this.httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
     return this.http.get(this.apiUrl + url);
   }
 

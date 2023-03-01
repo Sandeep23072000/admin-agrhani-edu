@@ -5,25 +5,24 @@ import { AuthService } from 'src/app/service/auth.service';
 import { imageFormatValidator } from 'src/app/imgvalidator';
 
 @Component({
-  selector: 'app-add-college',
-  templateUrl: './add-college.component.html',
-  styleUrls: ['./add-college.component.css']
+  selector: 'app-add-image-gallery',
+  templateUrl: './add-image-gallery.component.html',
+  styleUrls: ['./add-image-gallery.component.css']
 })
-export class AddCollegeComponent implements OnInit {
-
+export class AddImageGalleryComponent {
   is_submit: boolean = false;
   error: string = '';
   selectedImage: any = false;
-  addCollegeForm = this.fb.group({
-    name: ['', Validators.required],
-    address: ['', Validators.required],
+  addImageForm = this.fb.group({
+  //   name: ['', Validators.required],
+  //   address: ['', Validators.required],
     // image: ['', [Validators.required, imageFormatValidator]]
   });
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private auth: AuthService, private fb: FormBuilder, public dialog: MatDialog, public dialogRef: MatDialogRef<AddCollegeComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private auth: AuthService, private fb: FormBuilder, public dialog: MatDialog, public dialogRef: MatDialogRef<AddImageGalleryComponent>) {
     console.log(data, 'college dialooggggg');
-    if (data?.college) {
-      this.updateCollege(data?.college);
+    if (data?.Image) {
+      this.updateCollege(data?.Image);
     }
   }
 
@@ -31,10 +30,10 @@ export class AddCollegeComponent implements OnInit {
 
   }
 
-  get uc() { return this.addCollegeForm.controls; };
+  get uc() { return this.addImageForm.controls; };
   updateCollege(data: any) {
-    this.uc['name'].setValue(data?.name);
-    this.uc['address'].setValue(data?.address);
+    // this.uc['name'].setValue(data?.name);
+    // this.uc['address'].setValue(data?.address);
     // this.uc['image'].setValue(data?.image);
   }
 
@@ -46,21 +45,21 @@ export class AddCollegeComponent implements OnInit {
     }
   }
 
-  addCollegeFormSubmit() {
+  addImageFormSubmit() {
     this.is_submit = true;
-    console.log(this.addCollegeForm.value);
-    if (this.addCollegeForm.invalid) {
-      return
-    }
+    // console.log(this.addImageForm.value);
+    // if (this.addImageForm.invalid) {
+    //   return
+    // }
     const formData: any = new FormData();
-    formData.append("name", this.addCollegeForm.value?.name);
-    formData.append("address", this.addCollegeForm.value?.address);
-    // formData.append("image", this.addCollegeForm.value?.image);
+    // formData.append("name", this.addImageForm.value?.name);
+    // formData.append("address", this.addImageForm.value?.address);
+    // formData.append("image", this.addImageForm.value?.image);
 
     formData.append("image", this.selectedImage, this.selectedImage.name);
     console.log(formData, " formData");
     if (!this.data?.update) {
-      this.auth.postMultiPartAPI('/college/add', formData).subscribe((res) => {
+      this.auth.postMultiPartAPI('/gallery/add', formData).subscribe((res) => {
         console.log(res);
 
         if (res.success) {

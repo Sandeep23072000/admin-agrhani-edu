@@ -1,13 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { BannerComponent } from './banner/banner.component';
+import { CollegeInquiryComponent } from './college-inquiry/college-inquiry.component';
 import { CollegeComponent } from './college/college.component';
+import { ContactInquiryComponent } from './contact-inquiry/contact-inquiry.component';
 import { CourseComponent } from './course/course.component';
+import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
 
-const routes: Routes = [
-  { path: 'home', component: AdminComponent },
+const routes: Routes = [{
+  path: '', component  : AdminComponent,
+  children:[
   { path: 'college', component: CollegeComponent},
-  { path: 'course', component: CourseComponent}
+  { path: 'course', component: CourseComponent},
+  { path: 'banner', component: BannerComponent},
+  { path: 'image-gallery', component: ImageGalleryComponent},
+  { path: 'college-inquiry', component:CollegeInquiryComponent},
+  { path: 'contact-inquiry', component: ContactInquiryComponent},
+]
+}
 ];
 
 @NgModule({

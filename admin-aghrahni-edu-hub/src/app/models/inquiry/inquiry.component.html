@@ -1,0 +1,47 @@
+
+<div class="modal-body scroll">
+    <h5 mat-dialog-title>Inquiry Details</h5>
+    <div class="row mt-4">
+        <div class="col-lg-6 mt-3">
+            <div class="mb-4">
+                <label for="delivery-field fs-4" class="form-label">Name</label>
+                <h6>{{details.name}}</h6>
+            </div>
+            <div class="mb-4">
+                <label for="delivery-field" class="form-label">Date of Birth</label>
+                <h6>{{details.dob}}</h6>
+            </div>
+            <div class="mb-4">
+                <label for="delivery-field" class="form-label">Mobile Number</label>
+                <h6>{{details.mobileno}}</h6>
+            </div>
+            <div class="mb-4">
+                <label for="delivery-field" class="form-label">College Name</label>
+                <h6>{{details.collegename}}</h6>
+            </div>
+        </div>
+        <div class="col-lg-6 mt-3">
+            <div class="mb-4">
+                <label for="delivery-field" class="form-label">Father's Name</label>
+                <h6>{{details.fathername}}</h6>
+            </div>
+            <div class="mb-4">
+                <label for="delivery-field" class="form-label">Email</label>
+                <h6>{{details.email}}</h6>
+            </div>
+            <div class="mb-4">
+                <label for="delivery-field" class="form-label">Alternate Mobile</label>
+                <h6>{{details.alternateno}}</h6>
+            </div>
+            <div class="mb-4">
+                <label for="delivery-field" class="form-label">Course Name</label>
+                <h6>{{details.coursename}}</h6>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer mt-4">
+        <div class="hstack gap-2 justify-content-end">
+            <button type="button" class="btn btn-light" (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+</div>

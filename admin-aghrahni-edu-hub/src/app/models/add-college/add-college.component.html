@@ -17,8 +17,8 @@
                     <div class="col-lg-12">
                         <div class="mb-3">
                             <label for="customername-field" class="form-label text-success fw-bold">Address</label>
-                            <input type="text" formControlName="address" id="registration_number-field" class="form-control"
-                                placeholder="Enter College Address" required />
+                            <input type="text" formControlName="address" id="registration_number-field"
+                                class="form-control" placeholder="Enter College Address" required />
                             <!-- <p *ngIf="is_submit && addCollegeForm.controls['registration_number'].hasError('required')" style="color:red">
                                 Registration number is required</p>
                             <p style="color:red">{{error}}</p>  -->
@@ -27,11 +27,16 @@
                     <div class="col-lg-12">
                         <div class="mb-3">
                             <label for="customername-field" class="form-label text-success fw-bold">Image</label>
-                            <input type="file" name="image" class="file-input form-control"
-                            (change)="onFileSelected($event)" #addSpeacialization>
+                            <input type="file" formControlName="image" class="file-input form-control"
+                                (change)="onFileSelected($event)" #addSpeacialization>
                             <!-- <p *ngIf="is_submit && addCollegeForm.controls['registration_number'].hasError('required')" style="color:red">
                                 Registration number is required</p>
                             <p style="color:red">{{error}}</p>  -->
+                            <!-- <div
+                                *ngIf="addCollegeForm.get('image')?.invalid && (addCollegeForm.get('image')?.dirty || addCollegeForm.get('image')?.touched)">
+                                <div *ngIf="addCollegeForm.get('image')?.errors.invalidImageFormat">Invalid image format
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

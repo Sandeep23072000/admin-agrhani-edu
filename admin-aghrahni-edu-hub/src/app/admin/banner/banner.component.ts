@@ -4,33 +4,37 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AddCollegeComponent } from 'src/app/models/add-college/add-college.component';
 import { AuthService } from 'src/app/service/auth.service';
-// import { ToastrService } from 'ngx-toastr';
-import { AddCourseComponent } from 'src/app/models/add-course/add-course.component';
+import { AddBannerComponent } from 'src/app/models/add-banner/add-banner.component';
 
 export interface CollegeItem {
   name: string;
+  address: string;
+  image: string;
   action: string;
 }
 
 @Component({
-  selector: 'app-course',
-  templateUrl: './course.component.html',
-  styleUrls: ['./course.component.css']
+  selector: 'app-banner',
+  templateUrl: './banner.component.html',
+  styleUrls: ['./banner.component.css']
 })
-export class CourseComponent implements OnInit {
+export class BannerComponent implements OnInit  {
+  baseUrl: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tableData: CollegeItem[] = [];
   dataSource = new MatTableDataSource<CollegeItem>(this.tableData);
-  displayedColumns = ['name', 'action'];
+  displayedColumns = ['image', 'action'];
   constructor(private auth: AuthService, private router: Router, private dialog: MatDialog) {
-    this.auth.getAPI('/course').subscribe((res) => {
+    this.auth.getAPI('/banner').subscribe((res) => {
       console.log(res, 'api college responseeeeee');
       if (res.success) {
         this.dataSource.data = res.data;
       }
     });
+    this.baseUrl = auth.baseUrl
   }
 
   ngOnInit(): void {
@@ -41,9 +45,9 @@ export class CourseComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  addCourseDialog() {
-    
-    const dialogRef = this.dialog.open(AddCourseComponent, {
+  addBannerDialog() {
+
+    const dialogRef = this.dialog.open(AddBannerComponent, {
       width: '35%',
       data: {
         update: false,
@@ -54,17 +58,16 @@ export class CourseComponent implements OnInit {
       console.log(result, 'add college dialog yesss');
       if (result?.success) {
         this.dataSource.data.unshift(result?.data);
-        this.dataSource._updateChangeSubscription();
-        // this.toastr.success('Add', 'New course add successfully.');
+        // this.dataSource._updateChangeSubscription();
+        // this.toastr.success('Add', 'New college add successfully.');
       }
     })
   }
 
-  deleteCourseDialog(row: any, i: any) {
-    this.auth.deleteAPI('/course/' + row._id).subscribe((res) => {
+  deleteBannerDialog(row: any, i: any) {
+    this.auth.deleteAPI('/banner/' + row._id).subscribe((res) => {
       console.log(res);
     });
     console.log('delete College');
   }
-
 }

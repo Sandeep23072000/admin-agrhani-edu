@@ -8,13 +8,23 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { CollegeComponent } from './college/college.component';
 import { CourseComponent } from './course/course.component';
+import { BannerComponent } from './banner/banner.component';
+import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
+import { ReviewComponent } from './review/review.component';
+import { CollegeInquiryComponent } from './college-inquiry/college-inquiry.component';
+import { ContactInquiryComponent } from './contact-inquiry/contact-inquiry.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
     CollegeComponent,
-    CourseComponent
+    CourseComponent,
+    BannerComponent,
+    ImageGalleryComponent,
+    ReviewComponent,
+    CollegeInquiryComponent,
+    ContactInquiryComponent
   ],
   imports: [
     CommonModule,

@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/service/auth.service';
 export interface CollegeItem {
   name: string;
   address: string;
+  image: string;
   action: string;
 }
 
@@ -20,12 +21,12 @@ export interface CollegeItem {
   styleUrls: ['./college.component.css']
 })
 export class CollegeComponent implements OnInit {
-
+  baseUrl: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tableData: CollegeItem[] = [];
   dataSource = new MatTableDataSource<CollegeItem>(this.tableData);
-  displayedColumns = ['name', 'address', 'action'];
+  displayedColumns = ['name', 'address','image', 'action'];
   constructor(private auth: AuthService, private router: Router, private dialog: MatDialog) {
     this.auth.getAPI('/college').subscribe((res) => {
       console.log(res, 'api college responseeeeee');
@@ -33,6 +34,7 @@ export class CollegeComponent implements OnInit {
         this.dataSource.data = res.data;
       }
     });
+    this.baseUrl = auth.baseUrl
   }
 
   ngOnInit(): void {
@@ -56,7 +58,7 @@ export class CollegeComponent implements OnInit {
       console.log(result, 'add college dialog yesss');
       if (result?.success) {
         this.dataSource.data.unshift(result?.data);
-        this.dataSource._updateChangeSubscription();
+        // this.dataSource._updateChangeSubscription();
         // this.toastr.success('Add', 'New college add successfully.');
       }
     })

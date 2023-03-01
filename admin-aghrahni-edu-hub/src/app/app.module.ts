@@ -23,12 +23,20 @@ import { ToastrModule } from 'ngx-toastr';
 import { AddCollegeComponent } from './models/add-college/add-college.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddCourseComponent } from './models/add-course/add-course.component';
+import { AddBannerComponent } from './models/add-banner/add-banner.component';
+import { AddImageGalleryComponent } from './models/add-image-gallery/add-image-gallery.component';
+import { AddReviewComponent } from './models/add-review/add-review.component';
+import { InquiryComponent } from './models/inquiry/inquiry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddCollegeComponent,
-    AddCourseComponent
+    AddCourseComponent,
+    AddBannerComponent,
+    AddImageGalleryComponent,
+    AddReviewComponent,
+    InquiryComponent
   ],
   imports: [
     BrowserModule,

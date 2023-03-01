@@ -1,0 +1,33 @@
+<div class="container-fluid justify-content-center" style="width: 35%; position: absolute; top: 30%; left: 35%;">
+    <div class="card shadow-lg">
+        <div class="card-body rounded-5 text">
+            <p class="text-success text-center fw-bold fs-5 mt-3 mb-4">Login Here</p>
+            <form class="" [formGroup]="loginForm" (ngSubmit)="loginFormSubmit()">
+                <div>
+                    <label class=" fs-6" for="email">Email</label>
+                    <input class="form-control mb-3" id="email" type="text" formControlName="email"
+                        placeholder="Enter Your Email" required>
+                    <p *ngIf="is_submit && loginForm.controls['email'].hasError('required')"
+                        style="color:red; font-size: 18px;">
+                        Email is required</p>
+                    <p style="color:red">{{error}}</p>
+                </div>
+                <div>
+
+                    <label class=" fs-6" for="password">Password</label>
+                    <input class="form-control mb-3" id="password" type="text" formControlName="password"
+                        placeholder="Enter Your Password" required>
+                    <p *ngIf="is_submit && loginForm.controls['password'].hasError('required')"
+                        style="color:red; font-size: 18px;">
+                        Password is required</p>
+                    <p style="color:red">{{error}}</p>
+                </div>
+                <div class="text-center">
+                    <button class="btn-sm border border-none btn-success mt-3 px-5 rounded-3"
+                        type="submit">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
