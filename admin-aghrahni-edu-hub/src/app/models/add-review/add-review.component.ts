@@ -52,7 +52,7 @@ export class AddReviewComponent {
     // }
     const formData: any = new FormData();
     formData.append("description", this.addReviewForm.value?.description);
-    // formData.append("address", this.addImageForm.value?.address);
+    formData.append("title", this.addReviewForm.value?.title);
     // formData.append("image", this.addImageForm.value?.image);
 
     formData.append("image", this.selectedImage, this.selectedImage.name);

@@ -29,6 +29,7 @@ import { AddReviewComponent } from './models/add-review/add-review.component';
 import { InquiryComponent } from './models/inquiry/inquiry.component';
 import { ViewContactComponent } from './models/view-contact/view-contact.component';
 import { DeleteModuleComponent } from './models/delete-module/delete-module.component';
+import { DeleteInquiryComponent } from './models/delete-inquiry/delete-inquiry.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { DeleteModuleComponent } from './models/delete-module/delete-module.comp
     AddReviewComponent,
     InquiryComponent,
     ViewContactComponent,
-    DeleteModuleComponent
+    DeleteModuleComponent,
+    DeleteInquiryComponent
   ],
   imports: [
     BrowserModule,

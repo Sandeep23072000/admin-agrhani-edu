@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 // http://127.0.0.1:6000/api/v1/college
 
 export class AuthService {
-  domain = '192.168.1.12:4000'
+  domain = '192.168.1.5:4000'
   baseUrl: string = 'http://' + this.domain;
   apiUrl: string = this.baseUrl + '/api/v1';
   httpOptions: any;

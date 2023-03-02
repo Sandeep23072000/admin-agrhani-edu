@@ -17,13 +17,14 @@ export class AddCollegeComponent implements OnInit {
   addCollegeForm = this.fb.group({
     name: ['', Validators.required],
     address: ['', Validators.required],
-    image: ['', [Validators.required]]
+    image: ['', [Validators.required]],
+    website: ['', [Validators.required]],
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private auth: AuthService, private fb: FormBuilder, public dialog: MatDialog, public dialogRef: MatDialogRef<AddCollegeComponent>) {
     console.log(data, 'college dialooggggg');
     if (data?.college) {
-      this.updateCollege(data?.college);
+      // this.updateCollege(data?.college);
     }
   }
 
@@ -32,11 +33,11 @@ export class AddCollegeComponent implements OnInit {
   }
 
   get uc() { return this.addCollegeForm.controls; };
-  updateCollege(data: any) {
-    this.uc['name'].setValue(data?.name);
-    this.uc['address'].setValue(data?.address);
+  // updateCollege(data: any) {
+  //   this.uc['name'].setValue(data?.name);
+  //   this.uc['address'].setValue(data?.address);
     // this.uc['image'].setValue(data?.image);
-  }
+  // }
 
   onFileSelected(event: any) {
     const file: any = event.target.files[0];
@@ -55,7 +56,7 @@ export class AddCollegeComponent implements OnInit {
     const formData: any = new FormData();
     formData.append("name", this.addCollegeForm.value?.name);
     formData.append("address", this.addCollegeForm.value?.address);
-    // formData.append("image", this.addCollegeForm.value?.image);
+    formData.append("website", this.addCollegeForm.value?.website);
 
     formData.append("image", this.selectedImage, this.selectedImage.name);
     console.log(formData, " formData");

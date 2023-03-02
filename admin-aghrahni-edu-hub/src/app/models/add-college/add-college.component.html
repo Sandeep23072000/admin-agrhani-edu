@@ -26,6 +26,16 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="mb-3">
+                            <label for="customername-field" class="form-label text-success fw-bold">Website</label>
+                            <input type="text" formControlName="website" id="registration_number-field"
+                                class="form-control" placeholder="Enter Website" required />
+                            <!-- <p *ngIf="is_submit && addCollegeForm.controls['registration_number'].hasError('required')" style="color:red">
+                                Registration number is required</p>
+                            <p style="color:red">{{error}}</p>  -->
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="mb-3">
                             <label for="customername-field" class="form-label text-success fw-bold">Image</label>
                             <input type="file" formControlName="image" class="file-input form-control"
                                 (change)="onFileSelected($event)" #addSpeacialization>

@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { InquiryComponent } from 'src/app/models/inquiry/inquiry.component';
-import { DeleteModuleComponent } from 'src/app/models/delete-module/delete-module.component';
+import { DeleteInquiryComponent } from 'src/app/models/delete-inquiry/delete-inquiry.component';
 // import { ToastrService } from 'ngx-toastr';
 
 export interface CollegeItem {
@@ -73,7 +73,7 @@ export class CourseInquiryComponent {
   //   console.log('delete College');
   // }
   deleteCourseDialog(data: any, i: any) {
-    const dialogRef = this.dialog.open(DeleteModuleComponent, {
+    const dialogRef = this.dialog.open(DeleteInquiryComponent, {
       width: '20%',
       data: {
         data: data,

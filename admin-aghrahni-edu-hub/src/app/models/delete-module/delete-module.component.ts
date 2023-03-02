@@ -91,6 +91,18 @@ export class DeleteModuleComponent {
       //   }
       })
     }
+    else if (this.data.data?.value === 'Value') {
+      this.auth.deleteAPI('/enquiry/' + this.data.data?._id).subscribe((res) => {
+        // if (res.success) {
+        //   this.error = '';
+          this.dialogRef.close(res);
+        // }
+      // }, (err) => {
+      //   if (!err.error.success) {
+      //     this.error = err.error.msg;
+      //   }
+      })
+    }
      
      
     // else if (this.data?.type === 'hospital') {
