@@ -14,6 +14,7 @@ import { ReviewComponent } from './review/review.component';
 import { CollegeInquiryComponent } from './college-inquiry/college-inquiry.component';
 import { ContactInquiryComponent } from './contact-inquiry/contact-inquiry.component';
 import { CourseInquiryComponent } from './course-inquiry/course-inquiry.component';
+import { NewsComponent } from './news/news.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { CourseInquiryComponent } from './course-inquiry/course-inquiry.componen
     ReviewComponent,
     CollegeInquiryComponent,
     ContactInquiryComponent,
-    CourseInquiryComponent
+    CourseInquiryComponent,
+    NewsComponent
   ],
   imports: [
     CommonModule,

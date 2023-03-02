@@ -8,6 +8,7 @@ import { ContactInquiryComponent } from './contact-inquiry/contact-inquiry.compo
 import { CourseInquiryComponent } from './course-inquiry/course-inquiry.component';
 import { CourseComponent } from './course/course.component';
 import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
+import { NewsComponent } from './news/news.component';
 import { ReviewComponent } from './review/review.component';
 
 const routes: Routes = [{
@@ -20,7 +21,8 @@ const routes: Routes = [{
   { path: 'image-gallery', component: ImageGalleryComponent},
   { path: 'college-inquiry', component:CollegeInquiryComponent},
   { path: 'contact-inquiry', component: ContactInquiryComponent},
-  { path: 'course-inquiry', component: CourseInquiryComponent}
+  { path: 'course-inquiry', component: CourseInquiryComponent},
+  { path: 'news', component: NewsComponent}
 ]
 }
 ];

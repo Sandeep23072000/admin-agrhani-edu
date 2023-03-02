@@ -30,6 +30,7 @@ import { InquiryComponent } from './models/inquiry/inquiry.component';
 import { ViewContactComponent } from './models/view-contact/view-contact.component';
 import { DeleteModuleComponent } from './models/delete-module/delete-module.component';
 import { DeleteInquiryComponent } from './models/delete-inquiry/delete-inquiry.component';
+import { AddNewsComponent } from './models/add-news/add-news.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DeleteInquiryComponent } from './models/delete-inquiry/delete-inquiry.c
     InquiryComponent,
     ViewContactComponent,
     DeleteModuleComponent,
-    DeleteInquiryComponent
+    DeleteInquiryComponent,
+    AddNewsComponent
   ],
   imports: [
     BrowserModule,

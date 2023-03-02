@@ -103,6 +103,18 @@ export class DeleteModuleComponent {
       //   }
       })
     }
+    else if (this.data.data?.type === 'news') {
+      this.auth.deleteAPI('/news/' + this.data.data?._id).subscribe((res) => {
+        // if (res.success) {
+        //   this.error = '';
+          this.dialogRef.close(res);
+        // }
+      // }, (err) => {
+      //   if (!err.error.success) {
+      //     this.error = err.error.msg;
+      //   }
+      })
+    }
      
      
     // else if (this.data?.type === 'hospital') {

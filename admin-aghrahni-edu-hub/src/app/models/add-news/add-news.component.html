@@ -1,0 +1,38 @@
+
+<div class="add-college">
+    <h3 mat-dialog-title>Add-Course</h3>
+    <div mat-dialog-content>
+        <form [formGroup]="addCourseForm" (ngSubmit)="addCourseFormSubmit()">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mb-3">
+                            <label for="customername-field" class="form-label text-success fw-bold">Title</label>
+                            <input type="text" formControlName="title" id="customername-field" class="form-control"
+                                placeholder="Enter Title" required>
+                            <!-- <p *ngIf="is_submit && addCollegeForm.controls['name'].hasError('required')" style="color:red">
+                                Name is required</p>
+                            <p style="color:red">{{error}}</p> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="mb-3">
+                            <label for="customername-field" class="form-label text-success fw-bold">Description</label>
+                            <input type="text" formControlName="description" id="customername-field" class="form-control"
+                                placeholder="Enter News Description" required>
+                            <!-- <p *ngIf="is_submit && addCollegeForm.controls['name'].hasError('required')" style="color:red">
+                                Name is required</p>
+                            <p style="color:red">{{error}}</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer mt-4">
+                <div class="hstack gap-2 justify-content-end">
+                    <button type="button" class="btn btn-light" (click)="closeDialog()">Close</button>
+                    <button type="submit" class="btn btn-success" id="edit-btn">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
