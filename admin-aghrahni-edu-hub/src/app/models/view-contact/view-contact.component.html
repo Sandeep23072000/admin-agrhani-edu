@@ -1,0 +1,48 @@
+
+<div class="modal-body scroll">
+    <h5 mat-dialog-title>Contact Details</h5>
+    <div class="row mt-4">
+        <div class="col-lg-6 mt-3">
+            <div class="mb-4">
+                <label for="delivery-field fs-4" class="form-label fs-6 text-success">Name</label>
+                <p>{{details.name}}</p>
+            </div>
+            <div class="mb-4">
+                <label for="delivery-field" class="form-label fs-6 text-success">Message</label>
+                <p>{{details.message}}</p>
+            </div>
+            
+            <!-- <div class="mb-4">
+                <label for="delivery-field" class="form-label">College Name</label>
+                <h6>{{details.collegename}}</h6>
+            </div> -->
+        </div>
+        <div class="col-lg-6 mt-3">
+            <!-- <div class="mb-4">
+                <label for="delivery-field" class="form-label">Father's Name</label>
+                <h6>{{details.fathername}}</h6>
+            </div> -->
+            <div class="mb-4">
+                <label for="delivery-field" class="form-label fs-6 text-success">Mobile Number</label>
+                <p>{{details.phoneno}}</p>
+            </div>
+            <div class="mb-4">
+                <label for="delivery-field" class="form-label fs-6 text-success">Email</label>
+                <p>{{details.email}}</p>
+            </div>
+            <!-- <div class="mb-4">
+                <label for="delivery-field" class="form-label">Alternate Mobile</label>
+                <h6>{{details.alternateno}}</h6>
+            </div> -->
+            <!-- <div class="mb-4">
+                <label for="delivery-field" class="form-label">Course Name</label>
+                <h6>{{details.coursename}}</h6>
+            </div> -->
+        </div>
+    </div>
+    <div class="modal-footer mt-4">
+        <div class="hstack gap-2 justify-content-end">
+            <button type="button" class="btn btn-light" (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+</div>

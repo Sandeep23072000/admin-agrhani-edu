@@ -27,6 +27,8 @@ import { AddBannerComponent } from './models/add-banner/add-banner.component';
 import { AddImageGalleryComponent } from './models/add-image-gallery/add-image-gallery.component';
 import { AddReviewComponent } from './models/add-review/add-review.component';
 import { InquiryComponent } from './models/inquiry/inquiry.component';
+import { ViewContactComponent } from './models/view-contact/view-contact.component';
+import { DeleteModuleComponent } from './models/delete-module/delete-module.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { InquiryComponent } from './models/inquiry/inquiry.component';
     AddBannerComponent,
     AddImageGalleryComponent,
     AddReviewComponent,
-    InquiryComponent
+    InquiryComponent,
+    ViewContactComponent,
+    DeleteModuleComponent
   ],
   imports: [
     BrowserModule,

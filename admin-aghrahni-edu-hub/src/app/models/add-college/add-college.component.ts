@@ -17,7 +17,7 @@ export class AddCollegeComponent implements OnInit {
   addCollegeForm = this.fb.group({
     name: ['', Validators.required],
     address: ['', Validators.required],
-    // image: ['', [Validators.required, imageFormatValidator]]
+    image: ['', [Validators.required]]
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private auth: AuthService, private fb: FormBuilder, public dialog: MatDialog, public dialogRef: MatDialogRef<AddCollegeComponent>) {

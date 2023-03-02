@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 // import { ToastrService } from 'ngx-toastr';
 import { AddCourseComponent } from 'src/app/models/add-course/add-course.component';
+import { DeleteModuleComponent } from 'src/app/models/delete-module/delete-module.component';
 
 export interface CollegeItem {
   name: string;
@@ -42,7 +43,7 @@ export class CourseComponent implements OnInit {
   }
 
   addCourseDialog() {
-    
+
     const dialogRef = this.dialog.open(AddCourseComponent, {
       width: '35%',
       data: {
@@ -60,11 +61,35 @@ export class CourseComponent implements OnInit {
     })
   }
 
-  deleteCourseDialog(row: any, i: any) {
-    this.auth.deleteAPI('/course/' + row._id).subscribe((res) => {
-      console.log(res);
+  // deleteCourseDialog(row: any, i: any) {
+  //   this.auth.deleteAPI('/course/' + row._id).subscribe((res) => {
+  //     console.log(res);
+  //     if (res?.success) {
+  //       this.dataSource.data.unshift(res?.data);
+  //       this.dataSource._updateChangeSubscription();
+  //     }
+  //   });
+
+  //   console.log('delete College');
+  // }
+
+  deleteCourseDialog(data: any, i: any) {
+    const dialogRef = this.dialog.open(DeleteModuleComponent, {
+      width: '20%',
+      data: {
+        data: data,
+        update: false,
+        str: 'Add'
+      }
     });
-    console.log('delete College');
-  }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result, 'add college dialog yesss');
+      if (result?.success) {
+        this.dataSource.data.unshift(result?.data);
+        this.dataSource._updateChangeSubscription();
+        // this.toastr.success('Add', 'New college add successfully.');
+      }
+    })
+}
 
 }

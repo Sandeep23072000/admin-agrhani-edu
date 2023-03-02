@@ -13,6 +13,7 @@ import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
 import { ReviewComponent } from './review/review.component';
 import { CollegeInquiryComponent } from './college-inquiry/college-inquiry.component';
 import { ContactInquiryComponent } from './contact-inquiry/contact-inquiry.component';
+import { CourseInquiryComponent } from './course-inquiry/course-inquiry.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ContactInquiryComponent } from './contact-inquiry/contact-inquiry.compo
     ImageGalleryComponent,
     ReviewComponent,
     CollegeInquiryComponent,
-    ContactInquiryComponent
+    ContactInquiryComponent,
+    CourseInquiryComponent
   ],
   imports: [
     CommonModule,

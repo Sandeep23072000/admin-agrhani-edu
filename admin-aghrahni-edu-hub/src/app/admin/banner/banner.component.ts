@@ -7,10 +7,9 @@ import { Router } from '@angular/router';
 import { AddCollegeComponent } from 'src/app/models/add-college/add-college.component';
 import { AuthService } from 'src/app/service/auth.service';
 import { AddBannerComponent } from 'src/app/models/add-banner/add-banner.component';
+import { DeleteModuleComponent } from 'src/app/models/delete-module/delete-module.component';
 
 export interface CollegeItem {
-  name: string;
-  address: string;
   image: string;
   action: string;
 }
@@ -64,10 +63,29 @@ export class BannerComponent implements OnInit  {
     })
   }
 
-  deleteBannerDialog(row: any, i: any) {
-    this.auth.deleteAPI('/banner/' + row._id).subscribe((res) => {
-      console.log(res);
+  // deleteBannerDialog(row: any, i: any) {
+  //   this.auth.deleteAPI('/banner/' + row._id).subscribe((res) => {
+  //     console.log(res);
+  //   });
+  //   console.log('delete College');
+  // }
+
+  deleteBannerDialog(data: any, i: any) {
+    const dialogRef = this.dialog.open(DeleteModuleComponent, {
+      width: '20%',
+      data: {
+        data: data,
+        update: false,
+        str: 'Add'
+      }
     });
-    console.log('delete College');
-  }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result, 'add college dialog yesss');
+      if (result?.success) {
+        this.dataSource.data.unshift(result?.data);
+        this.dataSource._updateChangeSubscription();
+        // this.toastr.success('Add', 'New college add successfully.');
+      }
+    })
+}
 }

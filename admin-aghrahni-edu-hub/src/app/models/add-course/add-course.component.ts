@@ -45,14 +45,16 @@ export class AddCourseComponent implements OnInit  {
       this.auth.postAPI('/course/add', this.addCourseForm.value).subscribe((res) => {
         console.log(res);
 
-      //   if (res?.success) {
-      //     this.error = '';
-      //     this.dialogRef.close(res);
-      //   }
-      // }, (err) => {
-      //   if (!err.error?.success) {
-      //     this.error = err.error?.msg;
+        if (res?.success) {
+          this.error = '';
+          this.dialogRef.close(res);
+        }
+      }, (err) => {
+        if (!err.error?.success) {
+          this.error = err.error?.msg;
+        }
     })
+  
   }
 
     //   this.auth.patchAPI('/course' + this.data?._id, formData).subscribe((res) => {

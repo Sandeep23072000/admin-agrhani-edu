@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { AddImageGalleryComponent } from 'src/app/models/add-image-gallery/add-image-gallery.component';
+import { DeleteModuleComponent } from 'src/app/models/delete-module/delete-module.component';
 
 
 export interface CollegeItem {
@@ -56,16 +57,40 @@ export class ImageGalleryComponent {
       console.log(result, 'add college dialog yesss');
       if (result?.success) {
         this.dataSource.data.unshift(result?.data);
-        // this.dataSource._updateChangeSubscription();
+        this.dataSource._updateChangeSubscription();
         // this.toastr.success('Add', 'New college add successfully.');
       }
     })
   }
 
-  deleteImageDialog(row: any, i: any) {
-    this.auth.deleteAPI('/gallery/' + row._id).subscribe((res) => {
-      console.log(res);
+  // deleteImageDialog(row: any, i: any) {
+  //   this.auth.deleteAPI('/gallery/' + row._id).subscribe((res) => {
+  //     console.log(res);
+  //     if (res?.success) {
+  //       this.dataSource.data.unshift(res?.data);
+  //       this.dataSource._updateChangeSubscription();
+  //     }
+  //   });
+  //   console.log('delete College');
+  // }
+
+  deleteImageDialog(data: any, i: any) {
+    const dialogRef = this.dialog.open(DeleteModuleComponent, {
+      width: '20%',
+      data: {
+        data: data,
+        update: false,
+        str: 'Add'
+      }
     });
-    console.log('delete College');
-  }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result, 'add college dialog yesss');
+      if (result?.success) {
+        this.dataSource.data.unshift(result?.data);
+        this.dataSource._updateChangeSubscription();
+        // this.toastr.success('Add', 'New college add successfully.');
+      }
+    })
+}
+  
 }

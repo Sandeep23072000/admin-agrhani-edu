@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddCollegeComponent } from 'src/app/models/add-college/add-college.component';
 import { AuthService } from 'src/app/service/auth.service';
+import { DeleteModuleComponent } from 'src/app/models/delete-module/delete-module.component';
 // import { ToastrService } from 'ngx-toastr';
 
 export interface CollegeItem {
@@ -58,16 +59,28 @@ export class CollegeComponent implements OnInit {
       console.log(result, 'add college dialog yesss');
       if (result?.success) {
         this.dataSource.data.unshift(result?.data);
-        // this.dataSource._updateChangeSubscription();
+        this.dataSource._updateChangeSubscription();
         // this.toastr.success('Add', 'New college add successfully.');
       }
     })
   }
 
-  deleteCollegeDialog(row: any, i: any) {
-    this.auth.deleteAPI('/college/' + row._id).subscribe((res) => {
-      console.log(res);
+  deleteCollegeDialog(data: any, i: any) {
+    const dialogRef = this.dialog.open(DeleteModuleComponent, {
+      width: '20%',
+      data: {
+        data: data,
+        update: false,
+        str: 'Add'
+      }
     });
-    console.log('delete College');
-  }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result, 'add college dialog yesss');
+      if (result?.success) {
+        this.dataSource.data.unshift(result?.data);
+        this.dataSource._updateChangeSubscription();
+        // this.toastr.success('Add', 'New college add successfully.');
+      }
+    })
+}
 }

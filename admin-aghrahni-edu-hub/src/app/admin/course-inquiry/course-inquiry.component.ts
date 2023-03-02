@@ -4,32 +4,32 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AddCollegeComponent } from 'src/app/models/add-college/add-college.component';
 import { AuthService } from 'src/app/service/auth.service';
-import { ViewContactComponent } from 'src/app/models/view-contact/view-contact.component';
+import { InquiryComponent } from 'src/app/models/inquiry/inquiry.component';
 import { DeleteModuleComponent } from 'src/app/models/delete-module/delete-module.component';
+// import { ToastrService } from 'ngx-toastr';
 
 export interface CollegeItem {
   name: string;
-  phoneno: string;
+  mobileno: string;
   email: string;
   action: string;
 }
 
 @Component({
-  selector: 'app-contact-inquiry',
-  templateUrl: './contact-inquiry.component.html',
-  styleUrls: ['./contact-inquiry.component.css']
+  selector: 'app-course-inquiry',
+  templateUrl: './course-inquiry.component.html',
+  styleUrls: ['./course-inquiry.component.css']
 })
-export class ContactInquiryComponent {
+export class CourseInquiryComponent {
   baseUrl: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tableData: CollegeItem[] = [];
   dataSource = new MatTableDataSource<CollegeItem>(this.tableData);
-  displayedColumns = ['name','phoneno','email','action'];
+  displayedColumns = ['name','mobileno','email','action'];
   constructor(private auth: AuthService, private router: Router, private dialog: MatDialog) {
-    this.auth.getAPI('/contact/').subscribe((res) => {
+    this.auth.getAPI('/enquiry/?type=course').subscribe((res) => {
       console.log(res, 'api college responseeeeee');
       if (res.success) {
         this.dataSource.data = res.data;
@@ -46,9 +46,9 @@ export class ContactInquiryComponent {
     this.dataSource.paginator = this.paginator;
   }
 
-  ContactViewDialog(data: any, index: number): void {
+  CollegeInquiryViewDialog(data: any, index: number): void {
 
-    const dialogRef = this.dialog.open(ViewContactComponent, {
+    const dialogRef = this.dialog.open(InquiryComponent, {
       width: '35%',
       data: {
         data: data,
@@ -60,19 +60,19 @@ export class ContactInquiryComponent {
       console.log(result, 'add college dialog yesss');
       if (result?.success) {
         this.dataSource.data.unshift(result?.data);
-        // this.dataSource._updateChangeSubscription();
+        this.dataSource._updateChangeSubscription();
         // this.toastr.success('Add', 'New college add successfully.');
       }
     })
   }
 
-  // deleteContactDialog(row: any, i: any) {
-  //   this.auth.deleteAPI('/contact/' + row._id).subscribe((res) => {
+  // deleteCollegeDialog(row: any, i: any) {
+  //   this.auth.deleteAPI('/college/' + row._id).subscribe((res) => {
   //     console.log(res);
   //   });
   //   console.log('delete College');
   // }
-  deleteContactDialog(data: any, i: any) {
+  deleteCourseDialog(data: any, i: any) {
     const dialogRef = this.dialog.open(DeleteModuleComponent, {
       width: '20%',
       data: {
