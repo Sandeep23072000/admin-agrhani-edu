@@ -27,16 +27,19 @@ export class NewsComponent {
   dataSource = new MatTableDataSource<CollegeItem>(this.tableData);
   displayedColumns = ['title','description', 'action'];
   constructor(private auth: AuthService, private router: Router, private dialog: MatDialog) {
-    this.auth.getAPI('/news').subscribe((res) => {
-      console.log(res, 'api college responseeeeee');
-      if (res.success) {
-        this.dataSource.data = res.data;
-      }
-    });
-    this.baseUrl = auth.baseUrl
+    this.baseUrl = auth.baseUrl;
+    this.NewsData();
   }
-
+  
   ngOnInit(): void {
+  }
+  NewsData(){
+  this.auth.getAPI('/news').subscribe((res) => {
+    console.log(res, 'api college responseeeeee');
+    if (res.success) {
+      this.dataSource.data = res.data;
+    }
+  });
   }
 
   ngAfterViewInit(): void {
@@ -90,6 +93,7 @@ export class NewsComponent {
         this.dataSource._updateChangeSubscription();
         // this.toastr.success('Add', 'New college add successfully.');
       }
+      this.NewsData();
     })
 }
 }

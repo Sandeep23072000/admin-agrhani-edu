@@ -27,20 +27,22 @@ export class CourseInquiryComponent {
   @ViewChild(MatSort) sort!: MatSort;
   tableData: CollegeItem[] = [];
   dataSource = new MatTableDataSource<CollegeItem>(this.tableData);
-  displayedColumns = ['name','mobileno','email','action'];
+  displayedColumns = ['name', 'mobileno', 'email', 'action'];
   constructor(private auth: AuthService, private router: Router, private dialog: MatDialog) {
+    this.baseUrl = auth.baseUrl;
+    this.CourseInqData();
+  }
+
+  ngOnInit(): void {
+  }
+  CourseInqData() {
     this.auth.getAPI('/enquiry/?type=course').subscribe((res) => {
       console.log(res, 'api college responseeeeee');
       if (res.success) {
         this.dataSource.data = res.data;
       }
     });
-    this.baseUrl = auth.baseUrl
   }
-
-  ngOnInit(): void {
-  }
-
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -88,6 +90,7 @@ export class CourseInquiryComponent {
         this.dataSource._updateChangeSubscription();
         // this.toastr.success('Add', 'New college add successfully.');
       }
+      this.CourseInqData();
     })
-}
+  }
 }

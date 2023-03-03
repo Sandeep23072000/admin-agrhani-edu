@@ -22,24 +22,27 @@ export interface CollegeItem {
   templateUrl: './college-inquiry.component.html',
   styleUrls: ['./college-inquiry.component.css']
 })
-export class CollegeInquiryComponent implements OnInit  {
+export class CollegeInquiryComponent implements OnInit {
   baseUrl: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tableData: CollegeItem[] = [];
   dataSource = new MatTableDataSource<CollegeItem>(this.tableData);
-  displayedColumns = ['name','mobileno','email','action'];
+  displayedColumns = ['name', 'mobileno', 'email', 'action'];
   constructor(private auth: AuthService, private router: Router, private dialog: MatDialog) {
+    this.baseUrl = auth.baseUrl;
+    this.CollegeInqData();
+  }
+
+  ngOnInit(): void {
+  }
+  CollegeInqData() {
     this.auth.getAPI('/enquiry/?type=college').subscribe((res) => {
       console.log(res, 'api college responseeeeee');
       if (res.success) {
         this.dataSource.data = res.data;
       }
     });
-    this.baseUrl = auth.baseUrl
-  }
-
-  ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
@@ -90,6 +93,7 @@ export class CollegeInquiryComponent implements OnInit  {
         this.dataSource._updateChangeSubscription();
         // this.toastr.success('Add', 'New college add successfully.');
       }
+      this.CollegeInqData();
     })
-}
+  }
 }

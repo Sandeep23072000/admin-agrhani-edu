@@ -25,18 +25,21 @@ export class ReviewComponent {
   @ViewChild(MatSort) sort!: MatSort;
   tableData: CollegeItem[] = [];
   dataSource = new MatTableDataSource<CollegeItem>(this.tableData);
-  displayedColumns = ['title','image', 'action'];
+  displayedColumns = ['title', 'image', 'action'];
   constructor(private auth: AuthService, private router: Router, private dialog: MatDialog) {
+    this.baseUrl = auth.baseUrl;
+    this.ReviewData();
+  }
+
+  ngOnInit(): void {
+  }
+  ReviewData() {
     this.auth.getAPI('/review').subscribe((res) => {
       console.log(res, 'api college responseeeeee');
       if (res.success) {
         this.dataSource.data = res.data;
       }
     });
-    this.baseUrl = auth.baseUrl
-  }
-
-  ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
@@ -90,6 +93,7 @@ export class ReviewComponent {
         this.dataSource._updateChangeSubscription();
         // this.toastr.success('Add', 'New college add successfully.');
       }
+      this.ReviewData();
     })
-}
+  }
 }

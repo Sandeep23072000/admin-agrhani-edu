@@ -19,7 +19,7 @@ export interface CollegeItem {
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.css']
 })
-export class BannerComponent implements OnInit  {
+export class BannerComponent implements OnInit {
   baseUrl: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -27,16 +27,19 @@ export class BannerComponent implements OnInit  {
   dataSource = new MatTableDataSource<CollegeItem>(this.tableData);
   displayedColumns = ['image', 'action'];
   constructor(private auth: AuthService, private router: Router, private dialog: MatDialog) {
+    this.baseUrl = auth.baseUrl;
+    this.BannerData();
+  }
+
+  ngOnInit(): void {
+  }
+  BannerData() {
     this.auth.getAPI('/banner').subscribe((res) => {
       console.log(res, 'api college responseeeeee');
       if (res.success) {
         this.dataSource.data = res.data;
       }
     });
-    this.baseUrl = auth.baseUrl
-  }
-
-  ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
@@ -86,6 +89,7 @@ export class BannerComponent implements OnInit  {
         this.dataSource._updateChangeSubscription();
         // this.toastr.success('Add', 'New college add successfully.');
       }
+      this.BannerData();
     })
-}
+  }
 }

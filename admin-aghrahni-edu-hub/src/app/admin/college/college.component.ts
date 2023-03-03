@@ -29,18 +29,20 @@ export class CollegeComponent implements OnInit {
   dataSource = new MatTableDataSource<CollegeItem>(this.tableData);
   displayedColumns = ['name', 'address','image', 'action'];
   constructor(private auth: AuthService, private router: Router, private dialog: MatDialog) {
-    this.auth.getAPI('/college').subscribe((res) => {
-      console.log(res, 'api college responseeeeee');
-      if (res.success) {
-        this.dataSource.data = res.data;
-      }
-    });
     this.baseUrl = auth.baseUrl
+    this.CollegeData();
   }
-
+  
   ngOnInit(): void {
   }
-
+  CollegeData(){
+  this.auth.getAPI('/college').subscribe((res) => {
+    console.log(res, 'api college responseeeeee');
+    if (res.success) {
+      this.dataSource.data = res.data;
+    }
+  });
+}
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -81,6 +83,7 @@ export class CollegeComponent implements OnInit {
         this.dataSource._updateChangeSubscription();
         // this.toastr.success('Add', 'New college add successfully.');
       }
+      this.CollegeData();
     })
 }
 }
