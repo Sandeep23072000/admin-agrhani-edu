@@ -12,9 +12,10 @@ export class LoginComponent implements OnInit {
 
   is_submit: boolean = false;
   error: string = '';
+  hide = true;
   loginForm = this.fb.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
   });
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
   }
@@ -31,20 +32,20 @@ export class LoginComponent implements OnInit {
     }
     this.auth.postAPI('/user/login', this.loginForm.value).subscribe((res: any) => {
       console.log(res);
-      // if (res.success) {
+      if (res.token) {
       this.router.navigate(['/admin/college'])
-      // }
-      // else{
-      //   this.loginForm.controls['password'].setErrors({ 'showError': true });
-      //   this.error = 'You are not authorized for login.';
-      // }
+      }
+      else{
+        this.loginForm.controls['password'].setErrors({ 'showError': true });
+        this.error = 'You are not authorized for login.';
+      }
     });
-    // (err: any) => {
-    //   console.log(err.error, 'loginnnnnnnnnnn err api calllllll');
-    //   if (!err.error.success) {
-    //     this.loginForm.controls['password'].setErrors({ 'showError': true });
-    //     this.error = err.error.msg;
-    //   }
-    // }
+    (err: any) => {
+      console.log(err.error, 'loginnnnnnnnnnn err api calllllll');
+      if (!err.error.success) {
+        this.loginForm.controls['password'].setErrors({ 'showError': true });
+        this.error = err.error.msg;
+      }
+    }
   }
 }

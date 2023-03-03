@@ -1,0 +1,9 @@
+.row{
+    position: relative;
+    top: 10%;
+}
+.password-addon{
+    position: absolute;
+    left: 85%;
+    top: 58%;
+}

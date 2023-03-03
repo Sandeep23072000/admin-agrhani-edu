@@ -13,7 +13,7 @@ export class ForgotPasswordComponent implements OnInit  {
   is_submit: boolean = false;
   error: string = '';
   ForgotForm = this.fb.group({
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
   });
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router){}
   ngOnInit(): void {}
@@ -29,7 +29,7 @@ export class ForgotPasswordComponent implements OnInit  {
     this.auth.postAPI('/user/forgotpassword', this.ForgotForm.value).subscribe((res: any) => {
       console.log(res);
       // if (res.success) {
-      this.router.navigate(['/admin/college'])
+      // this.router.navigate(['/admin/college'])
       // }
       // else{
       //   this.ForgotForm.controls['password'].setErrors({ 'showError': true });

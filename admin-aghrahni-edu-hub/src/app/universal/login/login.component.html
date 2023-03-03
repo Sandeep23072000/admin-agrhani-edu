@@ -1,4 +1,4 @@
-<div class="container-fluid justify-content-center" style="width: 35%; position: absolute; top: 15%; left: 35%;">
+<!-- <div class="container-fluid justify-content-center" style="width: 35%; position: absolute; top: 15%; left: 35%;">
     <div class="card shadow-lg">
         <div class="card-body rounded-5 text">
             <p class="text-success text-center fw-bold fs-5 mt-3 mb-4">Login Here</p>
@@ -30,5 +30,57 @@
 
             </form>
         </div>
+    </div>
+</div> -->
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="card mt-4">
+
+            <div class="card-body p-4">
+                <div class="text-center mt-2">
+                    <p class="text-primary fs-5 mb-4 fw-bold">Login Here</p>
+                </div>
+
+                <div class="alert alert-borderless alert-warning text-center mb-2 mx-2" role="alert">
+                    Enter your email and password for login!
+                </div>
+                <div class="p-2">
+                    <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit()">
+                        <div class="mb-3">
+                            <label class="form-label fs-6 mt-4 text-success" for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter Email" formControlName="email">
+                            <p *ngIf="is_submit && loginForm.controls['email'].hasError('required')" style="color:red">Email is
+                                required
+                            </p>
+                            <p *ngIf="is_submit && loginForm.controls['email'].hasError('showError')" style="color:red">{{error}}</p>
+                            <p *ngIf="is_submit && loginForm.controls['email'].hasError('pattern')" style="color:red">Valid email is required</p>
+                            
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fs-6 mt-4 text-success" for="password">Password</label>
+                            <input [type]="hide ? 'password' : 'text'"  class="form-control" id="password" placeholder="Enter Password" formControlName="password">
+                            <button class="btn btn-link text-decoration-none text-muted password-addon"
+                                                type="button" id="password-addon" (click)="hide = !hide"><i
+                                                    class="bi-eye-fill align-middle"></i></button>
+                            <p *ngIf="is_submit && loginForm.controls['password'].hasError('required')" style="color:red">Password is
+                                required
+                            </p>
+                            <p *ngIf="is_submit && loginForm.controls['password'].hasError('showError')" style="color:red">{{error}}</p>
+                            <!-- <p *ngIf="is_submit && loginForm.controls['password'].hasError('pattern')" style="color:red">Valid Password is required</p> -->
+                            
+                        </div>
+                        <a class="fs-6 mt-4" routerLink="/forgot-password">Forgot Password ?</a>
+
+                        <div class="text-center mt-5">
+                            <button class="btn btn-success w-100" type="submit">Submit</button>
+                        </div>
+                    </form><!-- end form -->
+                </div>
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+
     </div>
 </div>
